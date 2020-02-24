@@ -49,5 +49,5 @@ export function transformJsxChildren(node: ts.JsxElement, context: Transformatio
                 : child
         );
 
-    return context.transformExpression(ts.createArrayLiteral(childrenOrStringLiterals, true))
+    return childrenOrStringLiterals.map((child) => context.transformExpression(child))
 }

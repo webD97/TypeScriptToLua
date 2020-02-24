@@ -9,5 +9,5 @@ export const transformJsxElement: FunctionVisitor<ts.JsxElement> = (node, contex
     const propertiesExpression = context.transformExpression(node.openingElement.attributes);
     const children = transformJsxChildren(node, context);
 
-    return lua.createCallExpression(jsxFactory, [tagIdentifier, propertiesExpression, children], node);
+    return lua.createCallExpression(jsxFactory, [tagIdentifier, propertiesExpression, ...children], node);
 };
