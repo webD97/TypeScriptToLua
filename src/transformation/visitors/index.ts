@@ -40,6 +40,10 @@ import { transformTypeOfExpression } from "./typeof";
 import { typescriptVisitors } from "./typescript";
 import { transformPostfixUnaryExpression, transformPrefixUnaryExpression } from "./unary-expression";
 import { transformVariableStatement } from "./variable-declaration";
+import { transformJsxElement } from "./jsx/jsxElement";
+import { transformJsxAttributes } from "./jsx/jsxAttributes";
+import { transformJsxExpression } from "./jsx/jsxExpression";
+import { transformJsxSelfClosingElement } from "./jsx/jsxSelfClosingElement";
 
 const transformEmptyStatement: FunctionVisitor<ts.EmptyStatement> = () => undefined;
 const transformParenthesizedExpression: FunctionVisitor<ts.ParenthesizedExpression> = (node, context) =>
@@ -96,4 +100,8 @@ export const standardVisitors: Visitors = {
     [ts.SyntaxKind.VariableStatement]: transformVariableStatement,
     [ts.SyntaxKind.WhileStatement]: transformWhileStatement,
     [ts.SyntaxKind.YieldExpression]: transformYieldExpression,
+    [ts.SyntaxKind.JsxElement]: transformJsxElement,
+    [ts.SyntaxKind.JsxExpression]: transformJsxExpression,
+    [ts.SyntaxKind.JsxSelfClosingElement]: transformJsxSelfClosingElement,
+    [ts.SyntaxKind.JsxAttributes]: transformJsxAttributes
 };
